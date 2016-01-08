@@ -1,0 +1,745 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		F32B64DB1C3A3527000341EF /* Recipient+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = F32B64D71C3A3526000341EF /* Recipient+CoreDataProperties.swift */; };
+		F32B64DC1C3A3527000341EF /* Recipient.swift in Sources */ = {isa = PBXBuildFile; fileRef = F32B64D81C3A3527000341EF /* Recipient.swift */; };
+		F32B64DD1C3A3527000341EF /* Notification+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = F32B64D91C3A3527000341EF /* Notification+CoreDataProperties.swift */; };
+		F32B64DE1C3A3527000341EF /* Notification.swift in Sources */ = {isa = PBXBuildFile; fileRef = F32B64DA1C3A3527000341EF /* Notification.swift */; };
+		F32B64E01C3A49E7000341EF /* Arrow.png in Resources */ = {isa = PBXBuildFile; fileRef = F32B64DF1C3A49E7000341EF /* Arrow.png */; };
+		F35540891C375249004AF196 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F35540881C375249004AF196 /* AppDelegate.swift */; };
+		F355408E1C375249004AF196 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F355408C1C375249004AF196 /* Main.storyboard */; };
+		F35540911C375249004AF196 /* Arrivify.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = F355408F1C375249004AF196 /* Arrivify.xcdatamodeld */; };
+		F35540931C375249004AF196 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F35540921C375249004AF196 /* Assets.xcassets */; };
+		F35540961C375249004AF196 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F35540941C375249004AF196 /* LaunchScreen.storyboard */; };
+		F35540A11C375249004AF196 /* ArrivifyTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F35540A01C375249004AF196 /* ArrivifyTests.swift */; };
+		F35540AC1C375249004AF196 /* ArrivifyUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F35540AB1C375249004AF196 /* ArrivifyUITests.swift */; };
+		F35540BB1C3753AD004AF196 /* NotificationsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F35540B91C3753AD004AF196 /* NotificationsTableViewController.swift */; };
+		F35540BF1C37545E004AF196 /* NotificationTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F35540BD1C37545E004AF196 /* NotificationTableViewCell.swift */; };
+		F35540C61C375D3F004AF196 /* Plus72.png in Resources */ = {isa = PBXBuildFile; fileRef = F35540C51C375D3F004AF196 /* Plus72.png */; };
+		F35540CA1C376D56004AF196 /* AddNotificationTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F35540C91C376D56004AF196 /* AddNotificationTableViewController.swift */; };
+		F35540CC1C38B0A5004AF196 /* MapIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = F35540CB1C38B0A5004AF196 /* MapIcon.png */; };
+		F3ADC9D01C38D5B900CA4893 /* icon-avatar-60x60.png in Resources */ = {isa = PBXBuildFile; fileRef = F3ADC9BC1C38D5B900CA4893 /* icon-avatar-60x60.png */; };
+		F3ADC9D11C38D5B900CA4893 /* icon-avatar-60x60@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F3ADC9BD1C38D5B900CA4893 /* icon-avatar-60x60@2x.png */; };
+		F3ADC9D21C38D5B900CA4893 /* icon-checkbox-selected-green-25x25.png in Resources */ = {isa = PBXBuildFile; fileRef = F3ADC9BE1C38D5B900CA4893 /* icon-checkbox-selected-green-25x25.png */; };
+		F3ADC9D31C38D5B900CA4893 /* icon-checkbox-selected-green-25x25@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F3ADC9BF1C38D5B900CA4893 /* icon-checkbox-selected-green-25x25@2x.png */; };
+		F3ADC9D41C38D5B900CA4893 /* icon-checkbox-unselected-25x25.png in Resources */ = {isa = PBXBuildFile; fileRef = F3ADC9C01C38D5B900CA4893 /* icon-checkbox-unselected-25x25.png */; };
+		F3ADC9D51C38D5B900CA4893 /* icon-checkbox-unselected-25x25@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F3ADC9C11C38D5B900CA4893 /* icon-checkbox-unselected-25x25@2x.png */; };
+		F3ADC9D61C38D5B900CA4893 /* THBubbleColor.m in Sources */ = {isa = PBXBuildFile; fileRef = F3ADC9C31C38D5B900CA4893 /* THBubbleColor.m */; };
+		F3ADC9D71C38D5B900CA4893 /* THContact.m in Sources */ = {isa = PBXBuildFile; fileRef = F3ADC9C51C38D5B900CA4893 /* THContact.m */; };
+		F3ADC9D81C38D5B900CA4893 /* THContactBubble.m in Sources */ = {isa = PBXBuildFile; fileRef = F3ADC9C71C38D5B900CA4893 /* THContactBubble.m */; };
+		F3ADC9D91C38D5B900CA4893 /* THContactPickerTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F3ADC9C91C38D5B900CA4893 /* THContactPickerTableViewCell.m */; };
+		F3ADC9DA1C38D5B900CA4893 /* THContactPickerTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F3ADC9CA1C38D5B900CA4893 /* THContactPickerTableViewCell.xib */; };
+		F3ADC9DB1C38D5B900CA4893 /* THContactPickerView.m in Sources */ = {isa = PBXBuildFile; fileRef = F3ADC9CC1C38D5B900CA4893 /* THContactPickerView.m */; };
+		F3ADC9DC1C38D5B900CA4893 /* THContactPickerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F3ADC9CE1C38D5B900CA4893 /* THContactPickerViewController.m */; };
+		F3ADC9DD1C38D5B900CA4893 /* THContactPickerViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F3ADC9CF1C38D5B900CA4893 /* THContactPickerViewController.xib */; };
+		F672DF97E3D159F71D46B781 /* libPods-Arrivify.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 89284A660CD06504737065BC /* libPods-Arrivify.a */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		F355409D1C375249004AF196 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = F355407D1C375248004AF196 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = F35540841C375249004AF196;
+			remoteInfo = Arrivify;
+		};
+		F35540A81C375249004AF196 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = F355407D1C375248004AF196 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = F35540841C375249004AF196;
+			remoteInfo = Arrivify;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		89284A660CD06504737065BC /* libPods-Arrivify.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Arrivify.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		99B9990F3DCDAAF57E26A6C1 /* Pods-Arrivify.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Arrivify.release.xcconfig"; path = "Pods/Target Support Files/Pods-Arrivify/Pods-Arrivify.release.xcconfig"; sourceTree = "<group>"; };
+		F32B64D71C3A3526000341EF /* Recipient+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Recipient+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		F32B64D81C3A3527000341EF /* Recipient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Recipient.swift; sourceTree = "<group>"; };
+		F32B64D91C3A3527000341EF /* Notification+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Notification+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		F32B64DA1C3A3527000341EF /* Notification.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Notification.swift; sourceTree = "<group>"; };
+		F32B64DF1C3A49E7000341EF /* Arrow.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Arrow.png; sourceTree = "<group>"; };
+		F35540851C375249004AF196 /* Arrivify.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Arrivify.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		F35540881C375249004AF196 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		F355408D1C375249004AF196 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		F35540901C375249004AF196 /* Arrivify.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Arrivify.xcdatamodel; sourceTree = "<group>"; };
+		F35540921C375249004AF196 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		F35540951C375249004AF196 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		F35540971C375249004AF196 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		F355409C1C375249004AF196 /* ArrivifyTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ArrivifyTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		F35540A01C375249004AF196 /* ArrivifyTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArrivifyTests.swift; sourceTree = "<group>"; };
+		F35540A21C375249004AF196 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		F35540A71C375249004AF196 /* ArrivifyUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ArrivifyUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		F35540AB1C375249004AF196 /* ArrivifyUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArrivifyUITests.swift; sourceTree = "<group>"; };
+		F35540AD1C375249004AF196 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		F35540B91C3753AD004AF196 /* NotificationsTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NotificationsTableViewController.swift; sourceTree = "<group>"; };
+		F35540BD1C37545E004AF196 /* NotificationTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NotificationTableViewCell.swift; sourceTree = "<group>"; };
+		F35540C51C375D3F004AF196 /* Plus72.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Plus72.png; sourceTree = "<group>"; };
+		F35540C91C376D56004AF196 /* AddNotificationTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddNotificationTableViewController.swift; sourceTree = "<group>"; };
+		F35540CB1C38B0A5004AF196 /* MapIcon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = MapIcon.png; sourceTree = "<group>"; };
+		F3ADC9B91C38CC5600CA4893 /* Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Bridging-Header.h"; sourceTree = "<group>"; };
+		F3ADC9BC1C38D5B900CA4893 /* icon-avatar-60x60.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon-avatar-60x60.png"; sourceTree = "<group>"; };
+		F3ADC9BD1C38D5B900CA4893 /* icon-avatar-60x60@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon-avatar-60x60@2x.png"; sourceTree = "<group>"; };
+		F3ADC9BE1C38D5B900CA4893 /* icon-checkbox-selected-green-25x25.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon-checkbox-selected-green-25x25.png"; sourceTree = "<group>"; };
+		F3ADC9BF1C38D5B900CA4893 /* icon-checkbox-selected-green-25x25@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon-checkbox-selected-green-25x25@2x.png"; sourceTree = "<group>"; };
+		F3ADC9C01C38D5B900CA4893 /* icon-checkbox-unselected-25x25.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon-checkbox-unselected-25x25.png"; sourceTree = "<group>"; };
+		F3ADC9C11C38D5B900CA4893 /* icon-checkbox-unselected-25x25@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon-checkbox-unselected-25x25@2x.png"; sourceTree = "<group>"; };
+		F3ADC9C21C38D5B900CA4893 /* THBubbleColor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = THBubbleColor.h; sourceTree = "<group>"; };
+		F3ADC9C31C38D5B900CA4893 /* THBubbleColor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = THBubbleColor.m; sourceTree = "<group>"; };
+		F3ADC9C41C38D5B900CA4893 /* THContact.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = THContact.h; sourceTree = "<group>"; };
+		F3ADC9C51C38D5B900CA4893 /* THContact.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = THContact.m; sourceTree = "<group>"; };
+		F3ADC9C61C38D5B900CA4893 /* THContactBubble.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = THContactBubble.h; sourceTree = "<group>"; };
+		F3ADC9C71C38D5B900CA4893 /* THContactBubble.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = THContactBubble.m; sourceTree = "<group>"; };
+		F3ADC9C81C38D5B900CA4893 /* THContactPickerTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = THContactPickerTableViewCell.h; sourceTree = "<group>"; };
+		F3ADC9C91C38D5B900CA4893 /* THContactPickerTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = THContactPickerTableViewCell.m; sourceTree = "<group>"; };
+		F3ADC9CA1C38D5B900CA4893 /* THContactPickerTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = THContactPickerTableViewCell.xib; sourceTree = "<group>"; };
+		F3ADC9CB1C38D5B900CA4893 /* THContactPickerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = THContactPickerView.h; sourceTree = "<group>"; };
+		F3ADC9CC1C38D5B900CA4893 /* THContactPickerView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = THContactPickerView.m; sourceTree = "<group>"; };
+		F3ADC9CD1C38D5B900CA4893 /* THContactPickerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = THContactPickerViewController.h; sourceTree = "<group>"; };
+		F3ADC9CE1C38D5B900CA4893 /* THContactPickerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = THContactPickerViewController.m; sourceTree = "<group>"; };
+		F3ADC9CF1C38D5B900CA4893 /* THContactPickerViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = THContactPickerViewController.xib; sourceTree = "<group>"; };
+		FDDB0B5057136B21CD52CD4A /* Pods-Arrivify.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Arrivify.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Arrivify/Pods-Arrivify.debug.xcconfig"; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		F35540821C375249004AF196 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F672DF97E3D159F71D46B781 /* libPods-Arrivify.a in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		F35540991C375249004AF196 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		F35540A41C375249004AF196 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		0BB0B9CF7340034D4281DD67 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				FDDB0B5057136B21CD52CD4A /* Pods-Arrivify.debug.xcconfig */,
+				99B9990F3DCDAAF57E26A6C1 /* Pods-Arrivify.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+		78483DF071DB622ABBF46A64 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				89284A660CD06504737065BC /* libPods-Arrivify.a */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		F355407C1C375248004AF196 = {
+			isa = PBXGroup;
+			children = (
+				F3ADC9BA1C38D55200CA4893 /* ThirdParty */,
+				F35540871C375249004AF196 /* Arrivify */,
+				F355409F1C375249004AF196 /* ArrivifyTests */,
+				F35540AA1C375249004AF196 /* ArrivifyUITests */,
+				F35540861C375249004AF196 /* Products */,
+				0BB0B9CF7340034D4281DD67 /* Pods */,
+				78483DF071DB622ABBF46A64 /* Frameworks */,
+			);
+			sourceTree = "<group>";
+		};
+		F35540861C375249004AF196 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				F35540851C375249004AF196 /* Arrivify.app */,
+				F355409C1C375249004AF196 /* ArrivifyTests.xctest */,
+				F35540A71C375249004AF196 /* ArrivifyUITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		F35540871C375249004AF196 /* Arrivify */ = {
+			isa = PBXGroup;
+			children = (
+				F32B64DF1C3A49E7000341EF /* Arrow.png */,
+				F35540CB1C38B0A5004AF196 /* MapIcon.png */,
+				F35540C51C375D3F004AF196 /* Plus72.png */,
+				F35540C21C375488004AF196 /* AddNotification */,
+				F35540C11C375465004AF196 /* Summary */,
+				F35540881C375249004AF196 /* AppDelegate.swift */,
+				F355408C1C375249004AF196 /* Main.storyboard */,
+				F35540921C375249004AF196 /* Assets.xcassets */,
+				F35540941C375249004AF196 /* LaunchScreen.storyboard */,
+				F35540971C375249004AF196 /* Info.plist */,
+				F355408F1C375249004AF196 /* Arrivify.xcdatamodeld */,
+				F32B64D71C3A3526000341EF /* Recipient+CoreDataProperties.swift */,
+				F32B64D81C3A3527000341EF /* Recipient.swift */,
+				F32B64D91C3A3527000341EF /* Notification+CoreDataProperties.swift */,
+				F32B64DA1C3A3527000341EF /* Notification.swift */,
+				F3ADC9B91C38CC5600CA4893 /* Bridging-Header.h */,
+			);
+			path = Arrivify;
+			sourceTree = "<group>";
+		};
+		F355409F1C375249004AF196 /* ArrivifyTests */ = {
+			isa = PBXGroup;
+			children = (
+				F35540A01C375249004AF196 /* ArrivifyTests.swift */,
+				F35540A21C375249004AF196 /* Info.plist */,
+			);
+			path = ArrivifyTests;
+			sourceTree = "<group>";
+		};
+		F35540AA1C375249004AF196 /* ArrivifyUITests */ = {
+			isa = PBXGroup;
+			children = (
+				F35540AB1C375249004AF196 /* ArrivifyUITests.swift */,
+				F35540AD1C375249004AF196 /* Info.plist */,
+			);
+			path = ArrivifyUITests;
+			sourceTree = "<group>";
+		};
+		F35540C11C375465004AF196 /* Summary */ = {
+			isa = PBXGroup;
+			children = (
+				F35540B91C3753AD004AF196 /* NotificationsTableViewController.swift */,
+				F35540BD1C37545E004AF196 /* NotificationTableViewCell.swift */,
+			);
+			name = Summary;
+			sourceTree = "<group>";
+		};
+		F35540C21C375488004AF196 /* AddNotification */ = {
+			isa = PBXGroup;
+			children = (
+				F35540C91C376D56004AF196 /* AddNotificationTableViewController.swift */,
+			);
+			name = AddNotification;
+			sourceTree = "<group>";
+		};
+		F3ADC9BA1C38D55200CA4893 /* ThirdParty */ = {
+			isa = PBXGroup;
+			children = (
+				F3ADC9BB1C38D56000CA4893 /* THContactPicker */,
+			);
+			name = ThirdParty;
+			path = Arrivify;
+			sourceTree = "<group>";
+		};
+		F3ADC9BB1C38D56000CA4893 /* THContactPicker */ = {
+			isa = PBXGroup;
+			children = (
+				F3ADC9BC1C38D5B900CA4893 /* icon-avatar-60x60.png */,
+				F3ADC9BD1C38D5B900CA4893 /* icon-avatar-60x60@2x.png */,
+				F3ADC9BE1C38D5B900CA4893 /* icon-checkbox-selected-green-25x25.png */,
+				F3ADC9BF1C38D5B900CA4893 /* icon-checkbox-selected-green-25x25@2x.png */,
+				F3ADC9C01C38D5B900CA4893 /* icon-checkbox-unselected-25x25.png */,
+				F3ADC9C11C38D5B900CA4893 /* icon-checkbox-unselected-25x25@2x.png */,
+				F3ADC9C21C38D5B900CA4893 /* THBubbleColor.h */,
+				F3ADC9C31C38D5B900CA4893 /* THBubbleColor.m */,
+				F3ADC9C41C38D5B900CA4893 /* THContact.h */,
+				F3ADC9C51C38D5B900CA4893 /* THContact.m */,
+				F3ADC9C61C38D5B900CA4893 /* THContactBubble.h */,
+				F3ADC9C71C38D5B900CA4893 /* THContactBubble.m */,
+				F3ADC9C81C38D5B900CA4893 /* THContactPickerTableViewCell.h */,
+				F3ADC9C91C38D5B900CA4893 /* THContactPickerTableViewCell.m */,
+				F3ADC9CA1C38D5B900CA4893 /* THContactPickerTableViewCell.xib */,
+				F3ADC9CB1C38D5B900CA4893 /* THContactPickerView.h */,
+				F3ADC9CC1C38D5B900CA4893 /* THContactPickerView.m */,
+				F3ADC9CD1C38D5B900CA4893 /* THContactPickerViewController.h */,
+				F3ADC9CE1C38D5B900CA4893 /* THContactPickerViewController.m */,
+				F3ADC9CF1C38D5B900CA4893 /* THContactPickerViewController.xib */,
+			);
+			name = THContactPicker;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		F35540841C375249004AF196 /* Arrivify */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = F35540B01C375249004AF196 /* Build configuration list for PBXNativeTarget "Arrivify" */;
+			buildPhases = (
+				BAED6CE22DA18AE4FBC51CC7 /* Check Pods Manifest.lock */,
+				F35540811C375249004AF196 /* Sources */,
+				F35540821C375249004AF196 /* Frameworks */,
+				F35540831C375249004AF196 /* Resources */,
+				A1A262E8684E2F8F10600AB6 /* Embed Pods Frameworks */,
+				BAFB2E2A68FBD700D40504BA /* Copy Pods Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = Arrivify;
+			productName = Arrivify;
+			productReference = F35540851C375249004AF196 /* Arrivify.app */;
+			productType = "com.apple.product-type.application";
+		};
+		F355409B1C375249004AF196 /* ArrivifyTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = F35540B31C375249004AF196 /* Build configuration list for PBXNativeTarget "ArrivifyTests" */;
+			buildPhases = (
+				F35540981C375249004AF196 /* Sources */,
+				F35540991C375249004AF196 /* Frameworks */,
+				F355409A1C375249004AF196 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				F355409E1C375249004AF196 /* PBXTargetDependency */,
+			);
+			name = ArrivifyTests;
+			productName = ArrivifyTests;
+			productReference = F355409C1C375249004AF196 /* ArrivifyTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		F35540A61C375249004AF196 /* ArrivifyUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = F35540B61C375249004AF196 /* Build configuration list for PBXNativeTarget "ArrivifyUITests" */;
+			buildPhases = (
+				F35540A31C375249004AF196 /* Sources */,
+				F35540A41C375249004AF196 /* Frameworks */,
+				F35540A51C375249004AF196 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				F35540A91C375249004AF196 /* PBXTargetDependency */,
+			);
+			name = ArrivifyUITests;
+			productName = ArrivifyUITests;
+			productReference = F35540A71C375249004AF196 /* ArrivifyUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		F355407D1C375248004AF196 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 0720;
+				LastUpgradeCheck = 0720;
+				ORGANIZATIONNAME = "Spencer Whyte";
+				TargetAttributes = {
+					F35540841C375249004AF196 = {
+						CreatedOnToolsVersion = 7.2;
+					};
+					F355409B1C375249004AF196 = {
+						CreatedOnToolsVersion = 7.2;
+						TestTargetID = F35540841C375249004AF196;
+					};
+					F35540A61C375249004AF196 = {
+						CreatedOnToolsVersion = 7.2;
+						TestTargetID = F35540841C375249004AF196;
+					};
+				};
+			};
+			buildConfigurationList = F35540801C375248004AF196 /* Build configuration list for PBXProject "Arrivify" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = F355407C1C375248004AF196;
+			productRefGroup = F35540861C375249004AF196 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				F35540841C375249004AF196 /* Arrivify */,
+				F355409B1C375249004AF196 /* ArrivifyTests */,
+				F35540A61C375249004AF196 /* ArrivifyUITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		F35540831C375249004AF196 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F35540961C375249004AF196 /* LaunchScreen.storyboard in Resources */,
+				F32B64E01C3A49E7000341EF /* Arrow.png in Resources */,
+				F35540CC1C38B0A5004AF196 /* MapIcon.png in Resources */,
+				F3ADC9D31C38D5B900CA4893 /* icon-checkbox-selected-green-25x25@2x.png in Resources */,
+				F3ADC9D01C38D5B900CA4893 /* icon-avatar-60x60.png in Resources */,
+				F3ADC9DA1C38D5B900CA4893 /* THContactPickerTableViewCell.xib in Resources */,
+				F3ADC9D41C38D5B900CA4893 /* icon-checkbox-unselected-25x25.png in Resources */,
+				F35540C61C375D3F004AF196 /* Plus72.png in Resources */,
+				F3ADC9D51C38D5B900CA4893 /* icon-checkbox-unselected-25x25@2x.png in Resources */,
+				F35540931C375249004AF196 /* Assets.xcassets in Resources */,
+				F3ADC9D21C38D5B900CA4893 /* icon-checkbox-selected-green-25x25.png in Resources */,
+				F3ADC9DD1C38D5B900CA4893 /* THContactPickerViewController.xib in Resources */,
+				F3ADC9D11C38D5B900CA4893 /* icon-avatar-60x60@2x.png in Resources */,
+				F355408E1C375249004AF196 /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		F355409A1C375249004AF196 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		F35540A51C375249004AF196 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		A1A262E8684E2F8F10600AB6 /* Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Arrivify/Pods-Arrivify-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		BAED6CE22DA18AE4FBC51CC7 /* Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		BAFB2E2A68FBD700D40504BA /* Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Arrivify/Pods-Arrivify-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		F35540811C375249004AF196 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F3ADC9D81C38D5B900CA4893 /* THContactBubble.m in Sources */,
+				F3ADC9DB1C38D5B900CA4893 /* THContactPickerView.m in Sources */,
+				F32B64DD1C3A3527000341EF /* Notification+CoreDataProperties.swift in Sources */,
+				F3ADC9D91C38D5B900CA4893 /* THContactPickerTableViewCell.m in Sources */,
+				F32B64DB1C3A3527000341EF /* Recipient+CoreDataProperties.swift in Sources */,
+				F3ADC9D71C38D5B900CA4893 /* THContact.m in Sources */,
+				F35540911C375249004AF196 /* Arrivify.xcdatamodeld in Sources */,
+				F3ADC9DC1C38D5B900CA4893 /* THContactPickerViewController.m in Sources */,
+				F35540CA1C376D56004AF196 /* AddNotificationTableViewController.swift in Sources */,
+				F35540BF1C37545E004AF196 /* NotificationTableViewCell.swift in Sources */,
+				F35540BB1C3753AD004AF196 /* NotificationsTableViewController.swift in Sources */,
+				F32B64DE1C3A3527000341EF /* Notification.swift in Sources */,
+				F35540891C375249004AF196 /* AppDelegate.swift in Sources */,
+				F32B64DC1C3A3527000341EF /* Recipient.swift in Sources */,
+				F3ADC9D61C38D5B900CA4893 /* THBubbleColor.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		F35540981C375249004AF196 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F35540A11C375249004AF196 /* ArrivifyTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		F35540A31C375249004AF196 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F35540AC1C375249004AF196 /* ArrivifyUITests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		F355409E1C375249004AF196 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = F35540841C375249004AF196 /* Arrivify */;
+			targetProxy = F355409D1C375249004AF196 /* PBXContainerItemProxy */;
+		};
+		F35540A91C375249004AF196 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = F35540841C375249004AF196 /* Arrivify */;
+			targetProxy = F35540A81C375249004AF196 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		F355408C1C375249004AF196 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				F355408D1C375249004AF196 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		F35540941C375249004AF196 /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				F35540951C375249004AF196 /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		F35540AE1C375249004AF196 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.2;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		F35540AF1C375249004AF196 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.2;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		F35540B11C375249004AF196 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = FDDB0B5057136B21CD52CD4A /* Pods-Arrivify.debug.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				INFOPLIST_FILE = Arrivify/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = SpencerWhyte.Arrivify;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "Arrivify/Bridging-Header.h";
+			};
+			name = Debug;
+		};
+		F35540B21C375249004AF196 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 99B9990F3DCDAAF57E26A6C1 /* Pods-Arrivify.release.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				INFOPLIST_FILE = Arrivify/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = SpencerWhyte.Arrivify;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "Arrivify/Bridging-Header.h";
+			};
+			name = Release;
+		};
+		F35540B41C375249004AF196 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				INFOPLIST_FILE = ArrivifyTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = SpencerWhyte.ArrivifyTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Arrivify.app/Arrivify";
+			};
+			name = Debug;
+		};
+		F35540B51C375249004AF196 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				INFOPLIST_FILE = ArrivifyTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = SpencerWhyte.ArrivifyTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Arrivify.app/Arrivify";
+			};
+			name = Release;
+		};
+		F35540B71C375249004AF196 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				INFOPLIST_FILE = ArrivifyUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = SpencerWhyte.ArrivifyUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_TARGET_NAME = Arrivify;
+				USES_XCTRUNNER = YES;
+			};
+			name = Debug;
+		};
+		F35540B81C375249004AF196 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				INFOPLIST_FILE = ArrivifyUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = SpencerWhyte.ArrivifyUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_TARGET_NAME = Arrivify;
+				USES_XCTRUNNER = YES;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		F35540801C375248004AF196 /* Build configuration list for PBXProject "Arrivify" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				F35540AE1C375249004AF196 /* Debug */,
+				F35540AF1C375249004AF196 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		F35540B01C375249004AF196 /* Build configuration list for PBXNativeTarget "Arrivify" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				F35540B11C375249004AF196 /* Debug */,
+				F35540B21C375249004AF196 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		F35540B31C375249004AF196 /* Build configuration list for PBXNativeTarget "ArrivifyTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				F35540B41C375249004AF196 /* Debug */,
+				F35540B51C375249004AF196 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		F35540B61C375249004AF196 /* Build configuration list for PBXNativeTarget "ArrivifyUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				F35540B71C375249004AF196 /* Debug */,
+				F35540B81C375249004AF196 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		F355408F1C375249004AF196 /* Arrivify.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				F35540901C375249004AF196 /* Arrivify.xcdatamodel */,
+			);
+			currentVersion = F35540901C375249004AF196 /* Arrivify.xcdatamodel */;
+			path = Arrivify.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
+	};
+	rootObject = F355407D1C375248004AF196 /* Project object */;
+}
