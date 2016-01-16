@@ -14,15 +14,14 @@ import CoreData
 class AppDelegate: UIResponder, UIApplicationDelegate, CLLocationManagerDelegate {
 
     var window: UIWindow?
+    let locationManager = CLLocationManager()
 
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         // Override point for customization after application launch.
-        
         GMSServices.provideAPIKey("AIzaSyCRUZasNJO1zEXKlZTxjYHizcQ9xlCgtyI")
-        CLLocationManager().delegate = self
-        CLLocationManager().requestAlwaysAuthorization()
-        
+        locationManager.delegate = self
+        locationManager.requestAlwaysAuthorization()
         
         
         return true
@@ -114,6 +113,32 @@ class AppDelegate: UIResponder, UIApplicationDelegate, CLLocationManagerDelegate
             }
         }
     }
+    
+    
+    internal func locationManager(manager: CLLocationManager, didEnterRegion region: CLRegion){
+        
+        if region is CLCircularRegion {
+            //handleRegionEvent(region)
+            print("didExitRegion")
+            
+        }
+    }
+
+    internal func locationManager(manager: CLLocationManager, didExitRegion region: CLRegion){
+        
+        if region is CLCircularRegion {
+            //handleRegionEvent(region)
+            print("didEnterRegion")
+            
+            
+            
+            
+            
+            
+        }
+    }
+    
+    
 
 }
 

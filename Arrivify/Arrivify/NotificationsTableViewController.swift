@@ -8,12 +8,23 @@
 
 import UIKit
 import CoreData
+import CoreLocation
+
+
 
 class NotificationsTableViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, NSFetchedResultsControllerDelegate {
     
     @IBOutlet weak var tableView:UITableView?
     
-    public var context: NSManagedObjectContext!
+    var context: NSManagedObjectContext!
+    
+    
+    var locationManager:CLLocationManager{
+        get{
+            let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
+            return appDelegate.locationManager
+        }
+    }
 
     lazy var fetchedResultsController: NSFetchedResultsController = {
         let notificationsFetchRequest = NSFetchRequest(entityName: "Notification")
@@ -59,7 +70,6 @@ class NotificationsTableViewController: UIViewController, UITableViewDelegate, U
     func numberOfSectionsInTableView(tableView: UITableView) -> Int {
         // #warning Incomplete implementation, return the number of sections
         if let sections = fetchedResultsController.sections {
-            print("Sections: \(sections.count)")
             return sections.count
         }
         
@@ -91,11 +101,8 @@ class NotificationsTableViewController: UIViewController, UITableViewDelegate, U
         let notification = fetchedResultsController.objectAtIndexPath(indexPath) as! Notification
         //cell!.textLabel?.text = notification.locationName
         
-        
-        
         let label = cell!.viewWithTag(2) as! UILabel
         label.text = notification.locationName
-  
         
         let imageView = cell!.viewWithTag(1) as! UIImageView
         let imageData = notification.image
@@ -103,21 +110,29 @@ class NotificationsTableViewController: UIViewController, UITableViewDelegate, U
             let image = UIImage(data: imageData!)
             imageView.image = image
         }
+        
+        let tintView = cell!.viewWithTag(4)!
+        tintView.hidden = notification.enabled
+        
+        let enabledSwitch = cell!.viewWithTag(3) as! UISwitch
+        enabledSwitch.addTarget(self, action: "enabledStateDidChange:", forControlEvents: UIControlEvents.ValueChanged)
+        enabledSwitch.on = notification.enabled
+        
+
+        
         return cell!
     }
     
     func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
         if(editingStyle == UITableViewCellEditingStyle.Delete){
             let notification = fetchedResultsController.objectAtIndexPath(indexPath) as! Notification
+            
+            self.stopMonitoringGeoNotificationWithIdentifier(notification.identifier!)
+            
             for recipient in notification.recipients!{
                 self.context.deleteObject(recipient as! NSManagedObject)
             }
-            
-            
             self.context.deleteObject(notification)
-            
-            
-            
             do {
                 try self.context.save()
             } catch {
@@ -132,6 +147,46 @@ class NotificationsTableViewController: UIViewController, UITableViewDelegate, U
         return true
     }
     
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        
+        if(segue.identifier == "EditNotification"){
+            
+            let navigationController = segue.destinationViewController as! UINavigationController
+            let addNotificationTableViewController = navigationController.viewControllers[0] as! AddNotificationTableViewController
+            
+            if let selectedNotificationCell = sender as? UITableViewCell {
+                let indexPath = tableView?.indexPathForCell(selectedNotificationCell)
+                let notification = fetchedResultsController.objectAtIndexPath(indexPath!) as! Notification
+                
+                addNotificationTableViewController.previousNotification = notification
+                
+                var names = Array<String>()
+                var phoneNumbers = Array<String>()
+                
+                let recipients = notification.recipients!
+                for recipient in recipients{
+                    names.append(recipient.name)
+                    phoneNumbers.append(recipient.phone)
+                }
+                
+                addNotificationTableViewController.names = names;
+                addNotificationTableViewController.phoneNumbers = phoneNumbers;
+                addNotificationTableViewController.locationName = notification.locationName!
+                addNotificationTableViewController.latitude = notification.latitude
+                addNotificationTableViewController.longitude = notification.longitude
+                addNotificationTableViewController.geofenceType = notification.geofenceType!
+                addNotificationTableViewController.radius = notification.radius // In meters
+                addNotificationTableViewController.locationImage = UIImage(data: notification.image!)
+                
+                
+            }
+            
+            
+        }
+        
+    }
+
+    
     
     @IBAction func unwindToMainView(segue:UIStoryboardSegue) {
         
@@ -139,29 +194,66 @@ class NotificationsTableViewController: UIViewController, UITableViewDelegate, U
     
     @IBAction func unwindWithNewNotification(segue:UIStoryboardSegue){
         if let addNotificationTableViewController = segue.sourceViewController as? AddNotificationTableViewController{
-            
-            let recipients = NSMutableSet()
-            
-            let names = addNotificationTableViewController.names
-            let phoneNumbers = addNotificationTableViewController.phoneNumbers
-            for(var i = 0 ; i < names.count; i++){
-                let currentName = names[i]
-                let currentPhoneNumber = phoneNumbers[i]
-                let recipient = NSEntityDescription.insertNewObjectForEntityForName("Recipient", inManagedObjectContext: self.context) as! Recipient
-                recipient.name = currentName
-                recipient.phone = currentPhoneNumber
-                recipients.addObject(recipient)
+            if(addNotificationTableViewController.previousNotification == nil){
+                let recipients = NSMutableSet()
+                let names = addNotificationTableViewController.names
+                let phoneNumbers = addNotificationTableViewController.phoneNumbers
+                for(var i = 0 ; i < names.count; i++){
+                    let currentName = names[i]
+                    let currentPhoneNumber = phoneNumbers[i]
+                    let recipient = NSEntityDescription.insertNewObjectForEntityForName("Recipient", inManagedObjectContext: self.context) as! Recipient
+                    recipient.name = currentName
+                    recipient.phone = currentPhoneNumber
+                    recipients.addObject(recipient)
+                }
+                
+                let notification = NSEntityDescription.insertNewObjectForEntityForName("Notification", inManagedObjectContext: self.context) as! Notification
+                notification.locationName = addNotificationTableViewController.locationName
+                notification.latitude = addNotificationTableViewController.latitude!
+                notification.longitude = addNotificationTableViewController.longitude!
+                notification.message = addNotificationTableViewController.message
+                notification.geofenceType = addNotificationTableViewController.geofenceType // Arrival, Departure, Both
+                notification.radius = addNotificationTableViewController.radius // In meters
+                notification.image = UIImagePNGRepresentation(addNotificationTableViewController.locationImage!)
+                notification.recipients = recipients
+                notification.identifier = NSUUID().UUIDString
+                notification.enabled = true
+                self.startMonitoringGeoNotification(notification)
+            }else{
+                let notification = addNotificationTableViewController.previousNotification!
+                
+                notification.locationName = addNotificationTableViewController.locationName
+                notification.latitude = addNotificationTableViewController.latitude!
+                notification.longitude = addNotificationTableViewController.longitude!
+                notification.message = addNotificationTableViewController.message
+                notification.geofenceType = addNotificationTableViewController.geofenceType // Arrival, Departure, Both
+                print("At exit \(addNotificationTableViewController.radius)")
+                notification.radius = addNotificationTableViewController.radius // In meters
+                notification.image = UIImagePNGRepresentation(addNotificationTableViewController.locationImage!)
+                
+                let previousRecipients = notification.recipients!
+                for recipient in previousRecipients{
+                    self.context.deleteObject(recipient as! NSManagedObject)
+                }
+    
+                let recipients = NSMutableSet()
+                
+                let names = addNotificationTableViewController.names
+                let phoneNumbers = addNotificationTableViewController.phoneNumbers
+                for(var i = 0 ; i < names.count; i++){
+                    let currentName = names[i]
+                    let currentPhoneNumber = phoneNumbers[i]
+                    let recipient = NSEntityDescription.insertNewObjectForEntityForName("Recipient", inManagedObjectContext: self.context) as! Recipient
+                    recipient.name = currentName
+                    recipient.phone = currentPhoneNumber
+                    recipients.addObject(recipient)
+                }
+                notification.recipients = recipients
+                
+                self.stopMonitoringGeoNotificationWithIdentifier(notification.identifier!)
+                self.startMonitoringGeoNotification(notification)
+                
             }
-
-            let notification = NSEntityDescription.insertNewObjectForEntityForName("Notification", inManagedObjectContext: self.context) as! Notification
-            notification.locationName = addNotificationTableViewController.locationName
-            notification.latitude = addNotificationTableViewController.latitude!
-            notification.longitude = addNotificationTableViewController.longitude!
-            notification.message = addNotificationTableViewController.message
-            notification.geofenceType = addNotificationTableViewController.geofenceType // Arrival, Departure, Both
-            notification.radius = Int32(addNotificationTableViewController.radius) // In meters
-            notification.image = UIImagePNGRepresentation(addNotificationTableViewController.locationImage!)
-            notification.recipients = recipients
             
             do {
                 try self.context.save()
@@ -178,30 +270,82 @@ class NotificationsTableViewController: UIViewController, UITableViewDelegate, U
     
     func controller(controller: NSFetchedResultsController, didChangeObject anObject: AnyObject, atIndexPath indexPath: NSIndexPath?, forChangeType type: NSFetchedResultsChangeType, newIndexPath: NSIndexPath?) {
         
-        
         print("Actually got the callback")
     }
     
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        
-        // TODO: Open the editor
-        
         tableView.deselectRowAtIndexPath(indexPath, animated: true)
+    }
+    
+    func enabledStateDidChange(sender:AnyObject){
+        let switchView = sender as! UISwitch
+        let contentView = switchView.superview
+        let cellView = contentView?.superview as! UITableViewCell
+        let indexPath = self.tableView?.indexPathForCell(cellView)
+        let notification = fetchedResultsController.objectAtIndexPath(indexPath!) as! Notification
+        let tintView = cellView.viewWithTag(4)!
+        notification.enabled = switchView.on
+        tintView.hidden = notification.enabled
+        
+        if(notification.enabled){
+            self.startMonitoringGeoNotification(notification)
+        }else{
+            self.stopMonitoringGeoNotificationWithIdentifier(notification.identifier!)
+        }
+        
+        do {
+            try self.context.save()
+        } catch {
+            fatalError("Failure to save context: \(error)")
+        }
+        
+        
         
     }
     
-/*
-    optional public func controller(controller: NSFetchedResultsController, didChangeObject anObject: AnyObject, atIndexPath indexPath: NSIndexPath?, forChangeType type: NSFetchedResultsChangeType, newIndexPath: NSIndexPath?)
     
-
-    optional public func controller(controller: NSFetchedResultsController, didChangeSection sectionInfo: NSFetchedResultsSectionInfo, atIndex sectionIndex: Int, forChangeType type: NSFetchedResultsChangeType)
+    func startMonitoringGeoNotification(notification:Notification){
+        if !CLLocationManager.isMonitoringAvailableForClass(CLCircularRegion) {
+            //showSimpleAlertWithTitle("Error", message: "Geofencing is not supported on this device!", viewController: self)
+            // TODO: Handle this case
+            return
+        }
+        // 2
+        if CLLocationManager.authorizationStatus() != .AuthorizedAlways {
+            //showSimpleAlertWithTitle("Warning", message: "Your geotification is saved but will only be activated once you grant Geotify permission to access the device location.", viewController: self)
+            
+            // TODO: Handle this case
+            
+        }
+        // 3
+        let coordinate = CLLocationCoordinate2D(latitude:notification.latitude, longitude: notification.longitude)
+        let region = CLCircularRegion(center: coordinate, radius: Double(notification.radius), identifier: notification.identifier!)
+        // 2
+        if(notification.geofenceType == "Arrival"){
+            region.notifyOnEntry = true
+            region.notifyOnExit = false
+        }
+        if(notification.geofenceType == "Departure"){
+            region.notifyOnExit = true
+            region.notifyOnEntry = false
+        }
+        if(notification.geofenceType == "Both"){
+            region.notifyOnExit = true
+            region.notifyOnEntry = true
+        }
+        
+        // 4
+        self.locationManager.startMonitoringForRegion(region)
+    }
     
+    func stopMonitoringGeoNotificationWithIdentifier(identifier:String){
+        for region in self.locationManager.monitoredRegions {
+            if let circularRegion = region as? CLCircularRegion {
+                if circularRegion.identifier == identifier {
+                    self.locationManager.stopMonitoringForRegion(circularRegion)
+                }
+            }
+        }
+    }
 
-    optional public func controllerWillChangeContent(controller: NSFetchedResultsController)
-
-    
-    optional public func controllerDidChangeContent(controller: NSFetchedResultsController)
-
-    optional public func controller(controller: NSFetchedResultsController, sectionIndexTitleForSectionName sectionName: String) -> String?
-    */
 }

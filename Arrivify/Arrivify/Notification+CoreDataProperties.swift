@@ -14,6 +14,7 @@ import CoreData
 
 extension Notification {
 
+    @NSManaged var enabled: Bool
     @NSManaged var longitude: Double
     @NSManaged var latitude: Double
     @NSManaged var image: NSData?
@@ -22,5 +23,5 @@ extension Notification {
     @NSManaged var radius: Int32
     @NSManaged var geofenceType: String?
     @NSManaged var recipients: NSSet?
-
+    @NSManaged var identifier:String?
 }

@@ -105,6 +105,7 @@
 		F3ADC9CD1C38D5B900CA4893 /* THContactPickerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = THContactPickerViewController.h; sourceTree = "<group>"; };
 		F3ADC9CE1C38D5B900CA4893 /* THContactPickerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = THContactPickerViewController.m; sourceTree = "<group>"; };
 		F3ADC9CF1C38D5B900CA4893 /* THContactPickerViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = THContactPickerViewController.xib; sourceTree = "<group>"; };
+		F3F071921C475FAF001966E2 /* TestLocation.gpx */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = TestLocation.gpx; sourceTree = "<group>"; };
 		FDDB0B5057136B21CD52CD4A /* Pods-Arrivify.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Arrivify.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Arrivify/Pods-Arrivify.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -154,6 +155,7 @@
 		F355407C1C375248004AF196 = {
 			isa = PBXGroup;
 			children = (
+				F3F071921C475FAF001966E2 /* TestLocation.gpx */,
 				F3ADC9BA1C38D55200CA4893 /* ThirdParty */,
 				F35540871C375249004AF196 /* Arrivify */,
 				F355409F1C375249004AF196 /* ArrivifyTests */,

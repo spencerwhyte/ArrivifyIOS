@@ -16,6 +16,8 @@ class AddNotificationTableViewController: UITableViewController, THContactPicker
     
     @IBOutlet var doneButton:UIBarButtonItem?
     
+    var geofenceType:String="Arrival"
+    
     var placePicker:GMSPlacePicker?
     var contactPicker:UIViewController?
     
@@ -27,28 +29,17 @@ class AddNotificationTableViewController: UITableViewController, THContactPicker
     var names:Array<String> = []
     var phoneNumbers:Array<String> = []
     
-    var locationName:String = "location"
+    var locationName:String?
     
     var locationImage:UIImage?
     
     var latitude:Double?
     var longitude:Double?
     
+    var previousNotification:Notification?
     
-    var radius:Int{
-        get{
-            let segmentControl = self.radiusCell?.viewWithTag(1) as! UISegmentedControl
-            let selectedIndex = segmentControl.selectedSegmentIndex
-            if(selectedIndex == 0){
-                return 250
-            }else if(selectedIndex == 1){
-                return 500
-            }else if(selectedIndex == 2){
-                return 1000
-            }
-            return 0
-        }
-    }
+    
+    var radius:Int32=500
     
     var message:String {
         get {
@@ -63,22 +54,14 @@ class AddNotificationTableViewController: UITableViewController, THContactPicker
             }else{ // Both
                 modifier = "{departed from,arrived at}"
             }
-            return "\(userName) has just \(modifier) \(self.locationName)"
-        }
-    }
-    
-    var geofenceType:String{
-        get{
-            let segmentControl = self.arrivalDepartureBothCell?.viewWithTag(1) as! UISegmentedControl
-            if(segmentControl.selectedSegmentIndex == 0){ // Arrival
-                return "Arrival"
-            }else if(segmentControl.selectedSegmentIndex == 1){ // Departure
-                return "Departure"
-            }else{ // Both
-                return "Both"
+            if(self.locationName == nil){
+                return "\(userName) has just \(modifier) some location"
+            }else{
+                return "\(userName) has just \(modifier) \(self.locationName!)"
             }
         }
     }
+
     
     
     override func viewDidLoad() {
@@ -98,7 +81,11 @@ class AddNotificationTableViewController: UITableViewController, THContactPicker
         
         //self.tableView.backgroundView = blurEffectView
         
-        self.doneButton?.enabled = false
+        if(self.previousNotification != nil){
+            self.navigationItem.title = "Edit Notification"
+        }
+        
+        self.updateDoneButtonState()
         
     }
 
@@ -135,11 +122,26 @@ class AddNotificationTableViewController: UITableViewController, THContactPicker
         if(indexPath.section == 0){
             let cell = tableView.dequeueReusableCellWithIdentifier("Map")
             self.mapCell = cell
+            if(self.locationImage != nil){
+                let mapImageView = self.mapCell?.viewWithTag(1) as! UIImageView
+                mapImageView.image = self.locationImage
+            }
             cell?.backgroundColor = UIColor.clearColor()
             return cell!
         }else if(indexPath.section == 1){
             let cell = tableView.dequeueReusableCellWithIdentifier("Radius")
             self.radiusCell = cell
+            
+            let segmentControl = self.radiusCell?.viewWithTag(1) as! UISegmentedControl
+            if(self.radius == 250){
+                segmentControl.selectedSegmentIndex = 0
+            }else if(self.radius == 500){
+                segmentControl.selectedSegmentIndex = 1
+            }else if(self.radius == 1000){
+                segmentControl.selectedSegmentIndex = 2
+            }
+            segmentControl.addTarget(self, action: "radiusDidChange:", forControlEvents: UIControlEvents.ValueChanged)
+            
             cell?.backgroundColor = UIColor.clearColor()
             return cell!
         }else if(indexPath.section == 2){
@@ -147,6 +149,14 @@ class AddNotificationTableViewController: UITableViewController, THContactPicker
             self.arrivalDepartureBothCell = cell
             
             let segmentControl = self.arrivalDepartureBothCell?.viewWithTag(1) as! UISegmentedControl
+            if(self.geofenceType == "Arrival"){
+                segmentControl.selectedSegmentIndex = 0
+            }else if(self.geofenceType == "Departure"){
+                segmentControl.selectedSegmentIndex = 1
+            }else if(self.geofenceType == "Both"){
+                segmentControl.selectedSegmentIndex = 2
+            }
+            
             segmentControl.addTarget(self, action: "arrivalDepartureBothChange:", forControlEvents: UIControlEvents.ValueChanged)
             
             cell?.backgroundColor = UIColor.clearColor()
@@ -217,7 +227,29 @@ class AddNotificationTableViewController: UITableViewController, THContactPicker
         }
     }
     
+    func radiusDidChange(sender:AnyObject){
+        let segmentControl = self.radiusCell?.viewWithTag(1) as! UISegmentedControl
+        let segmentIndex = segmentControl.selectedSegmentIndex
+        if(segmentIndex == 0){
+            self.radius = 250
+        }else if(segmentIndex == 1){
+            self.radius = 500
+        }else if(segmentIndex == 2){
+            self.radius = 1000
+        }
+        print("Radius Did Change")
+    }
+    
     func arrivalDepartureBothChange(sender:AnyObject){
+        let segmentControl = self.arrivalDepartureBothCell?.viewWithTag(1) as! UISegmentedControl
+        let segmentIndex = segmentControl.selectedSegmentIndex
+        if(segmentIndex == 0){
+            self.geofenceType = "Arrival"
+        }else if(segmentIndex == 1){
+           self.geofenceType = "Departure"
+        }else if(segmentIndex == 2){
+            self.geofenceType = "Both"
+        }
         self.updateMessage()
     }
     
@@ -242,12 +274,30 @@ class AddNotificationTableViewController: UITableViewController, THContactPicker
     
     func displayPlacePicker(){
         if(self.placePicker == nil){
-            let center = CLLocationManager().location?.coordinate
-            let northEast = CLLocationCoordinate2DMake(center!.latitude + 0.001, center!.longitude + 0.001)
-            let southWest = CLLocationCoordinate2DMake(center!.latitude - 0.001, center!.longitude - 0.001)
-            let viewport = GMSCoordinateBounds(coordinate: northEast, coordinate: southWest)
-            let config = GMSPlacePickerConfig(viewport: viewport)
-            self.placePicker = GMSPlacePicker(config: config)
+            if(self.locationName != nil){ // If we already have a location
+                let center = CLLocationCoordinate2D(latitude: self.latitude!, longitude: self.longitude!)
+                let northEast = CLLocationCoordinate2DMake(center.latitude + 0.001, center.longitude + 0.001)
+                let southWest = CLLocationCoordinate2DMake(center.latitude - 0.001, center.longitude - 0.001)
+                let viewport = GMSCoordinateBounds(coordinate: northEast, coordinate: southWest)
+                let config = GMSPlacePickerConfig(viewport: viewport)
+                self.placePicker = GMSPlacePicker(config: config)
+            }else{
+                let center = CLLocationManager().location?.coordinate
+                if(center != nil){
+                    let northEast = CLLocationCoordinate2DMake(center!.latitude + 0.001, center!.longitude + 0.001)
+                    let southWest = CLLocationCoordinate2DMake(center!.latitude - 0.001, center!.longitude - 0.001)
+                    let viewport = GMSCoordinateBounds(coordinate: northEast, coordinate: southWest)
+                    let config = GMSPlacePickerConfig(viewport: viewport)
+                    self.placePicker = GMSPlacePicker(config: config)
+                }else{
+                    let northEast = CLLocationCoordinate2DMake(37.7833 + 0.001, -122.4167 + 0.001)
+                    let southWest = CLLocationCoordinate2DMake(37.7833 - 0.001, -122.4167 - 0.001)
+                    let viewport = GMSCoordinateBounds(coordinate: northEast, coordinate: southWest)
+                    let config = GMSPlacePickerConfig(viewport: viewport)
+                    self.placePicker = GMSPlacePicker(config: config)
+                }
+            }
+            
         }
         self.placePicker?.pickPlaceWithCallback({ (place: GMSPlace?, error: NSError?) -> Void in
             if let error = error {
@@ -279,13 +329,9 @@ class AddNotificationTableViewController: UITableViewController, THContactPicker
                 self.updateMessage()
                 self.updateDoneButtonState()
                 
-                //print(place.name)
-                //print(place.formattedAddress.componentsSeparatedByString(", ").joinWithSeparator("\n"))
-                
                 self.latitude = place.coordinate.latitude
                 self.longitude = place.coordinate.longitude
-                
-                //print(place.coordinate)
+            
             }
         })
     }
@@ -304,7 +350,11 @@ class AddNotificationTableViewController: UITableViewController, THContactPicker
         phoneNumbers = []
         
         for contact in contactPhoneNumbers{
-            names.append("\(contact.firstName) \(contact.lastName)")
+            if(contact.lastName != nil){
+                names.append("\(contact.firstName) \(contact.lastName)")
+            }else{
+                names.append("\(contact.firstName)")
+            }
             phoneNumbers.append(contact.phone)
         }
         
@@ -332,9 +382,7 @@ class AddNotificationTableViewController: UITableViewController, THContactPicker
             let results = regex.matchesInString(deviceName, options: NSMatchingOptions.ReportCompletion, range: NSMakeRange(0, deviceName.characters.count))
             
             for result in results {
-                print("Hel")
                 for (var i = 1; i < result.numberOfRanges; i++) {
-                    print("Stop2")
                     if (result.rangeAtIndex(i).location != NSNotFound) {
                         let piece = oldDeviceName.substringWithRange(result.rangeAtIndex(i)).capitalizedString
                         name.append(piece)
