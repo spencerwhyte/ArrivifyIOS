@@ -14,10 +14,10 @@
             buildForArchiving = "YES">
             <BuildableReference
                BuildableIdentifier = 'primary'
-               BlueprintIdentifier = '7E82D4B33C9987DB67292E31'
+               BlueprintIdentifier = '945B973C584860999C52B5F8'
                BlueprintName = 'Pods-Arrivify'
                ReferencedContainer = 'container:Pods.xcodeproj'
-               BuildableName = 'libPods-Arrivify.a'>
+               BuildableName = 'Pods_Arrivify.framework'>
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>

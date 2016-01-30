@@ -16,12 +16,45 @@
                     <view key="view" contentMode="scaleToFill" id="Ze5-6b-2t3">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="MapIcon1024.png" translatesAutoresizingMaskIntoConstraints="NO" id="7Cd-yr-nCr">
+                                <rect key="frame" x="172" y="172" width="256" height="256"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="256" id="mpF-l0-HDd"/>
+                                </constraints>
+                            </imageView>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="7Cd-yr-nCr" firstAttribute="top" secondItem="Llm-lL-Icb" secondAttribute="bottom" constant="152" id="MTS-fY-kKZ"/>
+                            <constraint firstItem="7Cd-yr-nCr" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="OiS-BN-OBd"/>
+                            <constraint firstItem="7Cd-yr-nCr" firstAttribute="centerY" secondItem="Ze5-6b-2t3" secondAttribute="centerY" id="pud-54-OnB"/>
+                        </constraints>
                     </view>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="iYj-Kq-Ea1" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="53" y="375"/>
         </scene>
+        <!--View Controller-->
+        <scene sceneID="Gnm-vL-zlr">
+            <objects>
+                <viewController id="cMk-Uw-0oC" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="nOK-H4-n7P"/>
+                        <viewControllerLayoutGuide type="bottom" id="8vt-gn-07c"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="rjT-aQ-fkZ">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="130-g4-WZS" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+        </scene>
     </scenes>
+    <resources>
+        <image name="MapIcon1024.png" width="1024" height="1024"/>
+    </resources>
 </document>

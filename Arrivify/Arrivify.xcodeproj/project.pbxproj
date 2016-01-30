@@ -7,11 +7,15 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		BFC00FE11AC62BCACFF6291B /* Pods_Arrivify.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 026E410581F29A7BE1AA54AC /* Pods_Arrivify.framework */; };
 		F32B64DB1C3A3527000341EF /* Recipient+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = F32B64D71C3A3526000341EF /* Recipient+CoreDataProperties.swift */; };
 		F32B64DC1C3A3527000341EF /* Recipient.swift in Sources */ = {isa = PBXBuildFile; fileRef = F32B64D81C3A3527000341EF /* Recipient.swift */; };
 		F32B64DD1C3A3527000341EF /* Notification+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = F32B64D91C3A3527000341EF /* Notification+CoreDataProperties.swift */; };
 		F32B64DE1C3A3527000341EF /* Notification.swift in Sources */ = {isa = PBXBuildFile; fileRef = F32B64DA1C3A3527000341EF /* Notification.swift */; };
 		F32B64E01C3A49E7000341EF /* Arrow.png in Resources */ = {isa = PBXBuildFile; fileRef = F32B64DF1C3A49E7000341EF /* Arrow.png */; };
+		F354DF7F1C4AE02300BED707 /* Cloud.swift in Sources */ = {isa = PBXBuildFile; fileRef = F354DF7E1C4AE02300BED707 /* Cloud.swift */; };
+		F354DF811C4AF91800BED707 /* MapIcon1024.png in Resources */ = {isa = PBXBuildFile; fileRef = F354DF801C4AF91800BED707 /* MapIcon1024.png */; };
+		F354DF831C4B121F00BED707 /* SnapshotHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = F354DF821C4B121F00BED707 /* SnapshotHelper.swift */; };
 		F35540891C375249004AF196 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F35540881C375249004AF196 /* AppDelegate.swift */; };
 		F355408E1C375249004AF196 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F355408C1C375249004AF196 /* Main.storyboard */; };
 		F35540911C375249004AF196 /* Arrivify.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = F355408F1C375249004AF196 /* Arrivify.xcdatamodeld */; };
@@ -38,7 +42,6 @@
 		F3ADC9DB1C38D5B900CA4893 /* THContactPickerView.m in Sources */ = {isa = PBXBuildFile; fileRef = F3ADC9CC1C38D5B900CA4893 /* THContactPickerView.m */; };
 		F3ADC9DC1C38D5B900CA4893 /* THContactPickerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F3ADC9CE1C38D5B900CA4893 /* THContactPickerViewController.m */; };
 		F3ADC9DD1C38D5B900CA4893 /* THContactPickerViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F3ADC9CF1C38D5B900CA4893 /* THContactPickerViewController.xib */; };
-		F672DF97E3D159F71D46B781 /* libPods-Arrivify.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 89284A660CD06504737065BC /* libPods-Arrivify.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -59,13 +62,16 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		89284A660CD06504737065BC /* libPods-Arrivify.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Arrivify.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		026E410581F29A7BE1AA54AC /* Pods_Arrivify.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Arrivify.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		99B9990F3DCDAAF57E26A6C1 /* Pods-Arrivify.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Arrivify.release.xcconfig"; path = "Pods/Target Support Files/Pods-Arrivify/Pods-Arrivify.release.xcconfig"; sourceTree = "<group>"; };
 		F32B64D71C3A3526000341EF /* Recipient+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Recipient+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		F32B64D81C3A3527000341EF /* Recipient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Recipient.swift; sourceTree = "<group>"; };
 		F32B64D91C3A3527000341EF /* Notification+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Notification+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		F32B64DA1C3A3527000341EF /* Notification.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Notification.swift; sourceTree = "<group>"; };
 		F32B64DF1C3A49E7000341EF /* Arrow.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Arrow.png; sourceTree = "<group>"; };
+		F354DF7E1C4AE02300BED707 /* Cloud.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Cloud.swift; sourceTree = "<group>"; };
+		F354DF801C4AF91800BED707 /* MapIcon1024.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = MapIcon1024.png; sourceTree = "<group>"; };
+		F354DF821C4B121F00BED707 /* SnapshotHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SnapshotHelper.swift; sourceTree = "<group>"; };
 		F35540851C375249004AF196 /* Arrivify.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Arrivify.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F35540881C375249004AF196 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		F355408D1C375249004AF196 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -114,7 +120,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				F672DF97E3D159F71D46B781 /* libPods-Arrivify.a in Frameworks */,
+				BFC00FE11AC62BCACFF6291B /* Pods_Arrivify.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -147,7 +153,7 @@
 		78483DF071DB622ABBF46A64 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				89284A660CD06504737065BC /* libPods-Arrivify.a */,
+				026E410581F29A7BE1AA54AC /* Pods_Arrivify.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -179,6 +185,7 @@
 		F35540871C375249004AF196 /* Arrivify */ = {
 			isa = PBXGroup;
 			children = (
+				F354DF801C4AF91800BED707 /* MapIcon1024.png */,
 				F32B64DF1C3A49E7000341EF /* Arrow.png */,
 				F35540CB1C38B0A5004AF196 /* MapIcon.png */,
 				F35540C51C375D3F004AF196 /* Plus72.png */,
@@ -195,6 +202,7 @@
 				F32B64D91C3A3527000341EF /* Notification+CoreDataProperties.swift */,
 				F32B64DA1C3A3527000341EF /* Notification.swift */,
 				F3ADC9B91C38CC5600CA4893 /* Bridging-Header.h */,
+				F354DF7E1C4AE02300BED707 /* Cloud.swift */,
 			);
 			path = Arrivify;
 			sourceTree = "<group>";
@@ -211,6 +219,7 @@
 		F35540AA1C375249004AF196 /* ArrivifyUITests */ = {
 			isa = PBXGroup;
 			children = (
+				F354DF821C4B121F00BED707 /* SnapshotHelper.swift */,
 				F35540AB1C375249004AF196 /* ArrivifyUITests.swift */,
 				F35540AD1C375249004AF196 /* Info.plist */,
 			);
@@ -341,6 +350,7 @@
 				TargetAttributes = {
 					F35540841C375249004AF196 = {
 						CreatedOnToolsVersion = 7.2;
+						DevelopmentTeam = GM96RFL42Q;
 					};
 					F355409B1C375249004AF196 = {
 						CreatedOnToolsVersion = 7.2;
@@ -384,6 +394,7 @@
 				F3ADC9D01C38D5B900CA4893 /* icon-avatar-60x60.png in Resources */,
 				F3ADC9DA1C38D5B900CA4893 /* THContactPickerTableViewCell.xib in Resources */,
 				F3ADC9D41C38D5B900CA4893 /* icon-checkbox-unselected-25x25.png in Resources */,
+				F354DF811C4AF91800BED707 /* MapIcon1024.png in Resources */,
 				F35540C61C375D3F004AF196 /* Plus72.png in Resources */,
 				F3ADC9D51C38D5B900CA4893 /* icon-checkbox-unselected-25x25@2x.png in Resources */,
 				F35540931C375249004AF196 /* Assets.xcassets in Resources */,
@@ -476,6 +487,7 @@
 				F35540BB1C3753AD004AF196 /* NotificationsTableViewController.swift in Sources */,
 				F32B64DE1C3A3527000341EF /* Notification.swift in Sources */,
 				F35540891C375249004AF196 /* AppDelegate.swift in Sources */,
+				F354DF7F1C4AE02300BED707 /* Cloud.swift in Sources */,
 				F32B64DC1C3A3527000341EF /* Recipient.swift in Sources */,
 				F3ADC9D61C38D5B900CA4893 /* THBubbleColor.m in Sources */,
 			);
@@ -494,6 +506,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				F35540AC1C375249004AF196 /* ArrivifyUITests.swift in Sources */,
+				F354DF831C4B121F00BED707 /* SnapshotHelper.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -620,9 +633,10 @@
 			baseConfigurationReference = FDDB0B5057136B21CD52CD4A /* Pods-Arrivify.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				INFOPLIST_FILE = Arrivify/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = SpencerWhyte.Arrivify;
+				PRODUCT_BUNDLE_IDENTIFIER = com.spencerwhyte.arrivify;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "Arrivify/Bridging-Header.h";
 			};
@@ -633,9 +647,10 @@
 			baseConfigurationReference = 99B9990F3DCDAAF57E26A6C1 /* Pods-Arrivify.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Distribution: Spencer Whyte (GM96RFL42Q)";
 				INFOPLIST_FILE = Arrivify/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = SpencerWhyte.Arrivify;
+				PRODUCT_BUNDLE_IDENTIFIER = com.spencerwhyte.arrivify;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "Arrivify/Bridging-Header.h";
 			};

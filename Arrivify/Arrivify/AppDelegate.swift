@@ -19,7 +19,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate, CLLocationManagerDelegate
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         // Override point for customization after application launch.
-        GMSServices.provideAPIKey("AIzaSyCRUZasNJO1zEXKlZTxjYHizcQ9xlCgtyI")
+        GMSServices.provideAPIKey("AIzaSyBmf-zEfj2xvDVbxhyxcr9tOC-HXnZJde8")
+        
         locationManager.delegate = self
         locationManager.requestAlwaysAuthorization()
         
@@ -116,11 +117,23 @@ class AppDelegate: UIResponder, UIApplicationDelegate, CLLocationManagerDelegate
     
     
     internal func locationManager(manager: CLLocationManager, didEnterRegion region: CLRegion){
-        
         if region is CLCircularRegion {
             //handleRegionEvent(region)
             print("didExitRegion")
-            
+            let notification = self.notificationForIdentifier(region.identifier)
+            if(notification != nil){
+                let cloud = Cloud()
+                var recipients = Array<String>()
+                for recipient in (notification?.recipients)!{
+                    let recipientObject = recipient as! Recipient
+                    recipients.append(recipientObject.phone!)
+                }
+                var message = notification?.message
+                if(notification?.geofenceType == "Both"){
+                    message = message?.stringByReplacingOccurrencesOfString("{departed from,arrived at}", withString: "arrived at")
+                }
+                cloud.sendNotifications(message!, recipients: recipients)
+            }
         }
     }
 
@@ -130,13 +143,50 @@ class AppDelegate: UIResponder, UIApplicationDelegate, CLLocationManagerDelegate
             //handleRegionEvent(region)
             print("didEnterRegion")
             
-            
-            
-            
-            
+            let notification = self.notificationForIdentifier(region.identifier)
+            if(notification != nil){
+                
+                let cloud = Cloud()
+                var recipients = Array<String>()
+                for recipient in (notification?.recipients)!{
+                    let recipientObject = recipient as! Recipient
+                    recipients.append(recipientObject.phone!)
+                }
+                var message = notification?.message
+                if(notification?.geofenceType == "Both"){
+                    message = message?.stringByReplacingOccurrencesOfString("{departed from,arrived at}", withString: "departed from")
+                }
+                
+                cloud.sendNotifications(message!, recipients: recipients)
+                
+            }
             
         }
     }
+    
+    func notificationForIdentifier(identifier:String)->Notification?{
+        
+        let moc = self.managedObjectContext
+        let notificationFetch = NSFetchRequest(entityName: "Notification")
+        notificationFetch.predicate = NSPredicate(format: "identifier == %@", identifier)
+        do {
+            let fetched = try moc.executeFetchRequest(notificationFetch) as! [Notification]
+            if(fetched.count>1){
+                print("Error: Found more than one notification associated with a geofence")
+            }
+            if(fetched.count == 0){
+                print("Error: Couldn't find the notification associated with a geofence")
+                return nil
+            }
+            return fetched[0]
+            
+        } catch {
+            fatalError("Failed to fetch notifications: \(error)")
+        }
+        return nil
+    }
+    
+    
     
     
 
