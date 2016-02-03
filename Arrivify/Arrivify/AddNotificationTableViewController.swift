@@ -254,7 +254,7 @@ class AddNotificationTableViewController: UITableViewController, THContactPicker
     }
     
     func updateDoneButtonState(){
-        if(!self.names.isEmpty && self.locationName != "location"){ // Make sure that they have selected a contact and a location
+        if(!self.names.isEmpty && !self.phoneNumbers.isEmpty && self.locationName != "location" && self.latitude != nil && self.longitude != nil && self.locationImage != nil){ // Make sure that they have selected a contact and a location
             self.doneButton?.enabled = true
         }else{
             self.doneButton?.enabled = false
@@ -313,24 +313,37 @@ class AddNotificationTableViewController: UITableViewController, THContactPicker
                 
                 let percentEscapedQueryString = queryString.stringByAddingPercentEncodingWithAllowedCharacters(NSCharacterSet.URLQueryAllowedCharacterSet())
                 let mapURL = NSURL(string: percentEscapedQueryString!)
-                let image = UIImage(data: NSData(contentsOfURL: mapURL!)!)
                 
-                mapImageView.image = image
-                self.locationImage = image
                 
-                if let placeName = place.name{
-                    self.locationName = placeName
-                }else if let placeAddress = place.formattedAddress{
-                    self.locationName = placeAddress
+                
+                let data = NSData(contentsOfURL: mapURL!);
+                if(data != nil){
+                    let image = UIImage(data: data!);
+                    mapImageView.image = image
+                    self.locationImage = image
+                    
+                    if let placeName = place.name{
+                        self.locationName = placeName
+                    }else if let placeAddress = place.formattedAddress{
+                        self.locationName = placeAddress
+                    }else{
+                        self.locationName = "location"
+                    }
+
+                    self.latitude = place.coordinate.latitude
+                    self.longitude = place.coordinate.longitude
+                    
+                    self.updateMessage()
+                    self.updateDoneButtonState()
+                    
+                    
                 }else{
-                    self.locationName = "location"
+                    let alert:UIAlertView = UIAlertView(title: "No Internet Connection", message: "Please try again when you have an internet connection", delegate: nil, cancelButtonTitle: "OK")
+                    alert.show();
                 }
                 
-                self.updateMessage()
-                self.updateDoneButtonState()
                 
-                self.latitude = place.coordinate.latitude
-                self.longitude = place.coordinate.longitude
+                
             
             }
         })
@@ -342,28 +355,32 @@ class AddNotificationTableViewController: UITableViewController, THContactPicker
         }
     }
     
-    
     // Array of THContacts
     func didFinishSelectingContacts(contactPhoneNumbers: [AnyObject]!) {
-        
-        names = []
-        phoneNumbers = []
-        
+        self.names = []
+        self.phoneNumbers = []
         for contact in contactPhoneNumbers{
-            if(contact.lastName != nil){
-                names.append("\(contact.firstName) \(contact.lastName)")
+
+            let actualContact = contact as! THContact
+            print(actualContact)
+            print("\(actualContact.phone)")
+            if let lastName = actualContact.lastName {
+                if(lastName != "nil"){
+                    self.names.append("\(actualContact.firstName) \(actualContact.lastName)")
+                }else{
+                    self.names.append("\(actualContact.firstName)")
+                }
             }else{
-                names.append("\(contact.firstName)")
+                self.names.append("\(actualContact.firstName)")
             }
-            phoneNumbers.append(contact.phone)
+            self.phoneNumbers.append("\(actualContact.phone)")
+            
+            
         }
-        
         self.tableView.reloadData()
-        
         self.dismissViewControllerAnimated(true) { () -> Void in
             print("Done dismiss view controller")
         }
-        
         self.updateDoneButtonState()
     }
     
